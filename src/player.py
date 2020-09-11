@@ -4,13 +4,13 @@
 
 #The Player
 import textwrap
+from items.item import Item
 
-
-class Player():
-    def __init__(self, name, room):
+class Player(Item):
+    def __init__(self, name, room, inventory = []):
         self.name = name
         self.room = room
-        self.inventory = []
+        self.inventory = inventory
 
     def __str__(self):
         return f"{self.name}, {self.room}"
@@ -25,10 +25,18 @@ class Player():
             print(textwrap.fill(
                 f"\n You walk into the {self.room}. \n ", 65))
 
-    def add_inventory(self, inventory):
-        self.inventory.append(inventory)
-        return f"{self.inventory}"
+    def add_inventory(self, Item):
+        # super().__init__(self, name, description)
+        self.inventory.append(Item)
+        return f"you got a {self.inventory}"
 
     def remove_inventory(self, inventory):
         self.inventory.remove(inventory)
         return f"{self.inventory}"
+
+    def get_inv(self):
+        output=""
+        
+        for v in self.inventory:
+            output += f"{v}"
+        return output
