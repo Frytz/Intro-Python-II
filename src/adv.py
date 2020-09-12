@@ -7,6 +7,8 @@ from items.item import Item
 
 # Declare all the rooms
 sword = Weapon("A sword", "This sword is rusty", 10)
+dagger = Wff
+eapon("dagger", "this dagger causes damges to the user", -10)
 helmet = Armor("a helmet", "this is a wortless helmet", -5)
 # item = {
 #     'a_key': Item("key", "A small key"),
@@ -16,7 +18,7 @@ helmet = Armor("a helmet", "this is a wortless helmet", -5)
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", [sword]), 
+                     "North of you, the cave mount beckons", [sword, dagger]), 
                 
 
     'foyer':    Room("Foyer", 
@@ -119,7 +121,7 @@ while True:
         cur_play.move(user_input)
         # break
     elif user_input in ["get"]:
-        cur_play.add_inventory(Item)
+        cur_play.add_inventory(item)
         cur_play.room.remove_item(item)
     elif user_input in ["inv"]:
         print(cur_play.get_inv())
